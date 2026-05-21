@@ -33,7 +33,14 @@ function isoTime(hour: number, minute = 0): string {
   return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`
 }
 
-function task(t: Omit<Task, 'createdAt' | 'updatedAt'> & { createdDays?: number }): Task {
+type TaskInput = Omit<Task, 'createdAt' | 'updatedAt' | 'notes' | 'recurrence' | 'subtasks'> & {
+  createdDays?: number
+  notes?: string
+  recurrence?: Task['recurrence']
+  subtasks?: Task['subtasks']
+}
+
+function task(t: TaskInput): Task {
   return {
     notes: '',
     recurrence: undefined,
