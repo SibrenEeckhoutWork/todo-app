@@ -57,7 +57,7 @@ export function TodayView() {
 
       <AddTaskBar defaultDueDate={defaultDue} />
 
-      {overdue.length === 0 && todayItems.length === 0 ? (
+      {visibleOverdue.length === 0 && visibleToday.length === 0 ? (
         <EmptyState
           mark={
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none">

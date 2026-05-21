@@ -16,7 +16,6 @@ function dueDate(task: Task): Date | null {
 export function todayTasks(tasks: Task[]): Task[] {
   const now = startOfDay(new Date())
   return tasks.filter((t) => {
-    if (t.completed) return false
     const d = dueDate(t)
     if (!d) return false
     return isToday(d) || isBefore(d, now)
@@ -26,7 +25,6 @@ export function todayTasks(tasks: Task[]): Task[] {
 export function overdueTasks(tasks: Task[]): Task[] {
   const now = startOfDay(new Date())
   return tasks.filter((t) => {
-    if (t.completed) return false
     const d = dueDate(t)
     if (!d) return false
     return isBefore(d, now) && !isToday(d)
@@ -42,7 +40,6 @@ export function upcomingTasks(tasks: Task[]): Record<string, Task[]> {
   const groups: Record<string, Task[]> = {}
 
   tasks.forEach((t) => {
-    if (t.completed) return
     const d = dueDate(t)
     if (!d) return
     if (!isAfter(d, now) && !isToday(d)) return

@@ -17,6 +17,10 @@ export function UpcomingView() {
   const sortedDates = Object.keys(grouped).sort()
 
   const visibleOverdue = showCompleted ? overdue : overdue.filter((t) => !t.completed)
+  const hasVisibleGroups = sortedDates.some((k) => {
+    const items = showCompleted ? grouped[k] : grouped[k].filter((t) => !t.completed)
+    return items.length > 0
+  })
 
   return (
     <div className="px-5 py-4 pb-24 max-w-lg mx-auto md:pb-6 md:max-w-2xl">
@@ -29,7 +33,7 @@ export function UpcomingView() {
 
       <AddTaskBar />
 
-      {visibleOverdue.length === 0 && sortedDates.length === 0 ? (
+      {visibleOverdue.length === 0 && !hasVisibleGroups ? (
         <EmptyState title="Nothing scheduled." sub="A quiet stretch ahead." />
       ) : (
         <>
