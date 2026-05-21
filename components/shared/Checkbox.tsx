@@ -14,12 +14,14 @@ export function Checkbox({ checked, onChange, size = 22, className = '' }: Check
       role="checkbox"
       aria-checked={checked}
       onClick={(e) => { e.stopPropagation(); onChange(!checked) }}
-      className={`relative flex-shrink-0 rounded-full border-2 border-solid flex items-center justify-center transition-colors ${
-        checked
-          ? 'border-done-check bg-done-check'
-          : 'border-ink-secondary bg-transparent hover:border-ink-primary'
-      } ${className}`}
-      style={{ width: size, height: size, minWidth: size }}
+      className={`relative flex-shrink-0 rounded-full flex items-center justify-center transition-all ${className}`}
+      style={{
+        width: size,
+        height: size,
+        minWidth: size,
+        border: `2px solid ${checked ? '#4a7c59' : '#78716c'}`,
+        background: checked ? '#4a7c59' : 'transparent',
+      }}
     >
       {checked && (
         <svg
