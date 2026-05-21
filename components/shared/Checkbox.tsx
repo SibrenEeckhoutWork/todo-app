@@ -14,10 +14,10 @@ export function Checkbox({ checked, onChange, size = 22, className = '' }: Check
       role="checkbox"
       aria-checked={checked}
       onClick={(e) => { e.stopPropagation(); onChange(!checked) }}
-      className={`relative flex-shrink-0 rounded-full border-2 flex items-center justify-center transition-colors ${
+      className={`relative flex-shrink-0 rounded-full border-2 border-solid flex items-center justify-center transition-colors ${
         checked
           ? 'border-done-check bg-done-check'
-          : 'border-ink-muted bg-transparent'
+          : 'border-ink-secondary bg-transparent hover:border-ink-primary'
       } ${className}`}
       style={{ width: size, height: size, minWidth: size }}
     >
